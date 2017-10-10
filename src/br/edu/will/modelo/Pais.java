@@ -14,6 +14,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 
 /**
  *
@@ -27,8 +30,14 @@ public class Pais implements Serializable{
     @GeneratedValue(generator = "seq_pais", strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name="nome", nullable = false, length = 50)
+    @Length(max = 50, message = "O Nome não pode ter mais que {max} caracteres")
+    @NotBlank (message = "O Nome deve ser informado")
+    @NotNull (message = "O Nome não pode ser nulo")
     private String nome;
-    @Column(name="iso", nullable = false, length = 3)
+    @Column(name="ISO", nullable = false, length = 3)
+    @Length(max = 3, message = "O ISO não pode ter mais que {max} caracteres")
+    @NotBlank (message = "O ISO deve ser informado")
+    @NotNull (message = "O ISO não pode ser nulo")
     private String iso;
 
     public Pais() {
