@@ -5,10 +5,9 @@
  */
 package br.edu.will.testes;
 
+import br.edu.will.jpa.EntityManagerUtil;
 import br.edu.will.modelo.Pais;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 /**
  *
@@ -21,15 +20,13 @@ public class TestePersistirPais {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("AppWebModelPU");
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = EntityManagerUtil.getEntityManager();
         Pais p = new Pais();
-        p.setNome("Teste");
-        p.setIso("TES");
+        p.setNome("Canadá");
+        p.setIso("CAN");
         em.getTransaction().begin();
         em.persist(p);
         em.getTransaction().commit();
         em.close();
-        emf.close();
     }      
 }

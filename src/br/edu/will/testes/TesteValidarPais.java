@@ -29,7 +29,7 @@ public class TesteValidarPais {
         EntityManager em = emf.createEntityManager();
         Pais p = new Pais();
         p.setNome("Uruguai");
-        p.setIso("URUw");
+        p.setIso("URU");
         em.getTransaction().begin();
         Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
         Set<ConstraintViolation<Pais>> erros = validator.validate(p);
